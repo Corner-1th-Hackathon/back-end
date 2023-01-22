@@ -1,7 +1,7 @@
 import os.path
 
 from django.shortcuts import HttpResponse
-from shop.models import Post, Tag
+from shop.models import Post, Tag, Post2, Post3,Post4, Post5,Post6, Post7,Post8, Post9,Post10,Post11, Post12
 from shop import PostSerializer as ps
 import simplejson
 from django.views.decorators.csrf import csrf_exempt
@@ -12,6 +12,62 @@ def list(request):
     items=Post.objects.order_by("-date")
     serializer = ps.PostSerializer(items, many=True)
     return HttpResponse(simplejson.dumps(serializer.data))
+
+def list2(request):
+    items=Post2.objects.order_by("-date2")
+    serializer = ps.Post2Serializer(items, many=True)
+    return HttpResponse(simplejson.dumps(serializer.data))
+
+def list3(request):
+    items=Post3.objects.order_by("-date3")
+    serializer = ps.Post3Serializer(items, many=True)
+    return HttpResponse(simplejson.dumps(serializer.data))
+
+def list4(request):
+    items=Post4.objects.order_by("-date4")
+    serializer = ps.Post4Serializer(items, many=True)
+    return HttpResponse(simplejson.dumps(serializer.data))
+
+def list5(request):
+    items=Post5.objects.order_by("-date5")
+    serializer = ps.Post5Serializer(items, many=True)
+    return HttpResponse(simplejson.dumps(serializer.data))
+
+def list6(request):
+    items=Post6.objects.order_by("-date6")
+    serializer = ps.Post6Serializer(items, many=True)
+    return HttpResponse(simplejson.dumps(serializer.data))
+
+def list7(request):
+    items=Post7.objects.order_by("-date7")
+    serializer = ps.Post7Serializer(items, many=True)
+    return HttpResponse(simplejson.dumps(serializer.data))
+
+def list8(request):
+    items=Post8.objects.order_by("-date8")
+    serializer = ps.Post8Serializer(items, many=True)
+    return HttpResponse(simplejson.dumps(serializer.data))
+
+def list9(request):
+    items=Post9.objects.order_by("-date9")
+    serializer = ps.Post9Serializer(items, many=True)
+    return HttpResponse(simplejson.dumps(serializer.data))
+
+def list10(request):
+    items=Post10.objects.order_by("-date10")
+    serializer = ps.Post10Serializer(items, many=True)
+    return HttpResponse(simplejson.dumps(serializer.data))
+
+def list11(request):
+    items=Post11.objects.order_by("-date11")
+    serializer = ps.Post11Serializer(items, many=True)
+    return HttpResponse(simplejson.dumps(serializer.data))
+
+def list12(request):
+    items=Post12.objects.order_by("-date12")
+    serializer = ps.Post12Serializer(items, many=True)
+    return HttpResponse(simplejson.dumps(serializer.data))
+
 
 @csrf_exempt
 def insert(request):

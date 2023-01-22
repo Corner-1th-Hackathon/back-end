@@ -20,6 +20,18 @@ from shop import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("list", views.list),
+    path("list2", views.list2),
+    path("list3", views.list3),
+    path("list4", views.list4),
+    path("list5", views.list5),
+    path("list6", views.list6),
+    path("list7", views.list7),
+    path("list8", views.list8),
+    path("list9", views.list9),
+    path("list10", views.list10),
+    path("list11", views.list11),
+    path("list12", views.list12),
+
     path('insert', views.insert),
     path('detail/<int:post_code>', views.detail),
     path('accounts/', include('allauth.urls')),
