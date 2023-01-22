@@ -97,3 +97,6 @@ def tag_page(request, slug):
     #items = Product.objects.order_by("-product_name")
     serializer = ps.PostSerializer(tag, post_list, many=True)
     return HttpResponse(simplejson.dumps(serializer.data))
+
+def delete(request):
+    Post.objects.get(post_code=request.GET["post_code"]).delete()

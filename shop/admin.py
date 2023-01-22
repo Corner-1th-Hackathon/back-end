@@ -1,4 +1,8 @@
 from django.contrib import admin
+from django.contrib.auth import get_user_model
+from django.contrib.auth.admin import UserAdmin
+from .forms import CustomUserChangeForm, CustomUserCreationForm
+from .models import CustomUser
 from shop.models import Post, Tag, Post2, Post3,Post4, Post5,Post6, Post7,Post8, Post9,Post10,Post11, Post12
 
 # Register your models here.
@@ -66,3 +70,9 @@ class TagAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('name', )}
 
 admin.site.register(Tag, TagAdmin)
+
+class CustomUserAdmin(UserAdmin):
+    add_form = CustomUserCreationForm
+    form = CustomUserChangeForm
+    model = CustomUser
+    list_display = ['email']

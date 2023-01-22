@@ -1,5 +1,7 @@
 from rest_framework import serializers
-from shop.models import Post, Tag, Post2, Post3,Post4, Post5,Post6, Post7,Post8, Post9,Post10,Post11, Post12
+from shop.models import Post, Tag, Post2, Post3,Post4, Post5,Post6, Post7,Post8, Post9,Post10, Post11, Post12
+from .models import CustomUser
+
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
@@ -71,3 +73,7 @@ class Post12Serializer(serializers.ModelSerializer):
         model = Post12
         fields = ('post_code12', 'date12', 'name12', 'letter12', 'image12')
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ('email', 'last_login', 'date_joined', 'is_staff')
