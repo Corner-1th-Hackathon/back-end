@@ -21,7 +21,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("list", views.list),
     path('insert', views.insert),
-    path('detail/<int:product_code>', views.detail),
+    path('detail/<int:post_code>', views.detail),
     path('accounts/', include('allauth.urls')),
     path('tag/<str:slug>/', views.tag_page) #IP주소/blog/tag/slug/
 ]
