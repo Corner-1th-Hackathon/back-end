@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import AbstractUser
 
 class Tag(models.Model):
     name=models.CharField(max_length=50, unique=True)
@@ -107,3 +107,9 @@ class Post12(models.Model):
     letter12 = models.TextField(null=False)  #메세지
     image12 = models.CharField(null=True, blank=True, default="", max_length=500)  #이미지 파일명
     tags12 = models.ManyToManyField(Tag, blank=True)
+
+class CustomUser(AbstractUser):
+    # Any extra fields would go here
+
+    def __str__(self):
+        return self.email
