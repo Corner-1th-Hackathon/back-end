@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from shop import views
 
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("list", views.list),
@@ -31,11 +32,11 @@ urlpatterns = [
     path("list10", views.list10),
     path("list11", views.list11),
     path("list12", views.list12),
-
+    path('', include('shop.urls')),
     path('insert', views.insert),
     path('detail/<int:post_code>', views.detail),
     path('accounts/', include('allauth.urls')),
-    path('tag/<str:slug>/', views.tag_page), #IP주소/blog/tag/slug/
+    #path('tag/<str:slug>/', views.tag_page), #IP주소/blog/tag/slug/
     path('api/v1/shop/', include('shop.urls')),
     path('delete', views.delete),
 ]
