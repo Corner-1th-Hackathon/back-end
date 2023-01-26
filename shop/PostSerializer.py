@@ -17,7 +17,7 @@ class Post2Serializer(serializers.ModelSerializer):
 class Post3Serializer(serializers.ModelSerializer):
     class Meta:
         model = Post3
-        fields = ('post_code3', 'date3', 'name3', 'letter3', 'image3')
+        fields = ('post_code3', 'date3', 'name3', 'letter3', 'image3','tag3')
 
 
 class Post4Serializer(serializers.ModelSerializer):
