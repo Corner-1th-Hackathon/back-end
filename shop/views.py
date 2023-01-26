@@ -93,7 +93,7 @@ def insert(request):
     else:
         file_name = "-"
 
-    row = Post(letter=request.POST["letter"],
+    row = Post(letter=request.POST["letter"],address=request.POST["address"],
                   name=request.POST["name"], image=file_name, date=request.POST["date"], tag=request.POST["tag"])
 
     row.save()

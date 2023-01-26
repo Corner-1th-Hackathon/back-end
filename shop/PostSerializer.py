@@ -6,7 +6,7 @@ from .models import CustomUser
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model=Post
-        fields=('post_code','date','name','letter','image','tag')
+        fields=('post_code','date','name','letter','image','tag','address')
 
 class Post2Serializer(serializers.ModelSerializer):
     class Meta:
