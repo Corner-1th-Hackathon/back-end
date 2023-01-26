@@ -5,8 +5,48 @@ from shop.models import Post, Tag, Post2, Post3,Post4, Post5,Post6, Post7,Post8,
 from shop import PostSerializer as ps
 import simplejson
 from django.views.decorators.csrf import csrf_exempt
+from shop.PostSerializer import PostSerializer
+from rest_framework import viewsets
+from geopy.geocoders import Nominatim
 
 UPLOAD_DIR = os.path.dirname(__file__) + '/static/images/'
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+####### 도로명주소 위도 경도 값으로 바꿔주기 ########
+geo_local = Nominatim(user_agent='South Korea')
+
+'''
+# 위도, 경도 반환하는 함수
+def geocoding(address):
+    try:
+        geo = geo_local.geocode(address)
+        x_y = [geo.latitude, geo.longitude]
+        x= geo.latitude
+        y= geo.longitude
+        return x_y
+
+    except:
+        return [0,0]
+'''
+
+def geocoding(address):
+    try:
+        geo = geo_local.geocode(address)
+        return geo.latitude
+
+    except:
+        return 0
+
+def geocoding2(address):
+    try:
+        geo = geo_local.geocode(address)
+        return geo.longitude
+
+    except:
+        return 0
 
 def list(request):
     items=Post.objects.order_by("-date")
@@ -81,8 +121,9 @@ def insert(request):
     else:
         file_name = "-"
 
-    row = Post(letter=request.POST["letter"],
-                  name=request.POST["name"], image=file_name)
+    row = Post(letter=request.POST["letter"], date=request.POST["date"], address=request.POST["address"],
+               latitude=78.5, longitude=121.2,
+               name=request.POST["name"], image=file_name)
 
     row.save()
 
@@ -90,6 +131,7 @@ def detail(request, post_code):
     row = Post.objects.get(post_code=post_code)
     serializer = ps.PostSerializer(row)
     return HttpResponse(simplejson.dumps(serializer.data))
+
 
 def tag_page(request, slug):
     tag = Tag.objects.get(slug=slug)

@@ -33,9 +33,11 @@ urlpatterns = [
     path("list12", views.list12),
 
     path('insert', views.insert),
+    path('geocoding', views.geocoding),
     path('detail/<int:post_code>', views.detail),
     path('accounts/', include('allauth.urls')),
     path('tag/<str:slug>/', views.tag_page), #IP주소/blog/tag/slug/
     path('api/v1/shop/', include('shop.urls')),
     path('delete', views.delete),
+    path('', include('shop.urls')),
 ]

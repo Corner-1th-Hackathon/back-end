@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+
 class Tag(models.Model):
     name=models.CharField(max_length=50, unique=True)
     slug=models.SlugField(max_length=200, unique=True, allow_unicode=True)
@@ -19,6 +20,9 @@ class Post(models.Model):
     letter = models.TextField(null=False)  #메세지
     image = models.CharField(null=True, blank=True, default="", max_length=500)  #이미지 파일명
     tags = models.ManyToManyField(Tag, blank=True)
+    address = models.CharField(null=True, max_length=100)
+    latitude = models.DecimalField(null=True, max_digits=20, decimal_places=20)
+    longitude = models.DecimalField(null=True, max_digits=20, decimal_places=20)
 
 class Post2(models.Model):
     post_code2 = models.AutoField(primary_key=True)  #post 고유 번호

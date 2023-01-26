@@ -46,8 +46,11 @@ INSTALLED_APPS = [
     'allauth.account',
     #'allauth.socialaccount',
     #'allauth.socialaccount.providers.naver',
-    "shop"
+    'shop',
+
 ]
+
+DATE_INPUT_FORMATS = ['%Y-%m-%d']
 
 AUTH_USER_MODEL = 'shop.CustomUser'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
