@@ -7,7 +7,7 @@ from shop.models import Post, Tag, Post2, Post3,Post4, Post5,Post6, Post7,Post8,
 
 # Register your models here.
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('post_code','name','date','letter')
+    list_display = ('post_code','name','date','letter','tag')
 
 class Post2Admin(admin.ModelAdmin):
     list_display = ('post_code2','name2','date2','letter2')
@@ -75,4 +75,4 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = CustomUser
-    list_display = ['email']
+    list_display = ['email', 'username']
