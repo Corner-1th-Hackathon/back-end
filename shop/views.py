@@ -16,15 +16,14 @@ class PostViewSet(viewsets.ModelViewSet):
 UPLOAD_DIR = os.path.dirname(__file__) + '/static/images/'
 
 def list(request):
-    items=Post.objects.order_by("-date")
+    try:
+        tag=request.GET["tag"]
+    except:
+        tag=""
+    items=Post.objects.filter(tag__contains=tag).order_by("date")
     serializer = ps.PostSerializer(items, many=True)
     return HttpResponse(simplejson.dumps(serializer.data))
 
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     context = super(list, self).get_context_data()
-    #     context['tags'] = Tag.objects.all()  # [] : 템플릿에 필요한 변수
-    #     context['no_tag_post_count'] = Post.objects.filter(tag=None).count
-    #     return context
 
 def list2(request):
     items=Post2.objects.order_by("-date2")
@@ -95,7 +94,7 @@ def insert(request):
         file_name = "-"
 
     row = Post(letter=request.POST["letter"],
-                  name=request.POST["name"], image=file_name)
+                  name=request.POST["name"], image=file_name, date=request.POST["date"], tag=request.POST["tag"])
 
     row.save()
 

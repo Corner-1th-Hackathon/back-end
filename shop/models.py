@@ -19,6 +19,7 @@ class Post(models.Model):
     letter = models.TextField(null=False)  #메세지
     image = models.CharField(null=True, blank=True, default="", max_length=500)  #이미지 파일명
     tags = models.ManyToManyField(Tag, blank=True)
+    tag = models.CharField(null=True, max_length=100)
 
 class Post2(models.Model):
     post_code2 = models.AutoField(primary_key=True)  #post 고유 번호
@@ -112,4 +113,4 @@ class CustomUser(AbstractUser):
     # Any extra fields would go here
 
     def __str__(self):
-        return self.email
+        return self.username
