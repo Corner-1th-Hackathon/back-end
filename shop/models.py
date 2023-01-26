@@ -38,6 +38,7 @@ class Post3(models.Model):
     letter3 = models.TextField(null=False)  #메세지
     image3 = models.CharField(null=True, blank=True, default="", max_length=500)  #이미지 파일명
     tags3 = models.ManyToManyField(Tag, blank=True)
+    tag3 = models.CharField(null=True, max_length=100)
 
 class Post4(models.Model):
     post_code4 = models.AutoField(primary_key=True)  #post 고유 번호

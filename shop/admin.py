@@ -14,7 +14,7 @@ class Post2Admin(admin.ModelAdmin):
 
 
 class Post3Admin(admin.ModelAdmin):
-    list_display = ('post_code3', 'name3', 'date3', 'letter3')
+    list_display = ('post_code3', 'name3', 'date3', 'letter3','tag3')
 
 
 class Post4Admin(admin.ModelAdmin):
